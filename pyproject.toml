@@ -1,0 +1,32 @@
+[project]
+name = "agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "numpy>=2.3.2",
+    "openai>=1.97.1",
+    "outlines>=1.1.1",
+    "pydantic>=2.11.7",
+    "pytest>=8.4.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.7",
+]
+
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+fixable = ["ALL"]
