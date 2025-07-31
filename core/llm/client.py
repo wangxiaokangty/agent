@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 
 class LLMClient:
-    def __init__(self, model_name: str = None, base_url: str = None):
+    def __init__(self, model_name: str = None, base_url: str = None):  # type: ignore
         if base_url is None:
             load_dotenv()
 
@@ -24,7 +24,7 @@ class LLMClient:
                     "please fill MODEL_NAME in .env file in the project's root"
                 )
         openai_client = OpenAI(base_url=base_url)
-        self.model: VLLM | AsyncVLLM = outlines.from_vllm(openai_client, model_name)
+        self.model: VLLM | AsyncVLLM = outlines.from_vllm(openai_client, model_name)  # type: ignore
 
     def struct_generate(self, prompt: str, response_model: type[BaseModel]):
         result = self.model(prompt, response_model)
