@@ -38,7 +38,7 @@ TEST_STR = """
 
 def test_langchuner():
     chunker = LangChunker()
-    result = chunker.chunk(TEST_STR)
+    result: list[str] | list[list[str]] = chunker.chunk(TEST_STR)
     
     pp("-"*20+"chuner result:"+"-"*20)
     pp(result)
