@@ -1,4 +1,5 @@
 from core.chunker.lang import LangChunker
+from pprint import pp
 
 TEST_STR = """
 保尔·柯察金：钢铁意志的写照
@@ -38,4 +39,9 @@ TEST_STR = """
 def test_langchuner():
     chunker = LangChunker()
     result = chunker.chunk(TEST_STR)
+    
+    pp("-"*20+"chuner result:"+"-"*20)
+    pp(result)
+    pp("-"*20+"chuner  finish"+"-"*20)
+
     assert result is not None
