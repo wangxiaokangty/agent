@@ -7,8 +7,8 @@ from neo4j import GraphDatabase
 class Neo4jClient:
     def __init__(
         self,
-        url: str = None,
-        auth: tuple = None,
+        url: str | None = None,
+        auth: tuple | None = None,
         database: str = "neo4j",  # type: ignore
     ) -> None:  # type: ignore
         if url is None:
