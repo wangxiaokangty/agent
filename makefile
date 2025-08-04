@@ -1,6 +1,6 @@
 .PHONY: lint format
 
-all: lint format
+all: format lint
 
 lint:
 	uvx ruff check . --fix
