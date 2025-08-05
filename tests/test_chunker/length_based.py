@@ -1,6 +1,6 @@
 from pprint import pp
 
-from core.chunker.lang import LangChunker
+from core.chunker.length import LengthChunker
 
 TEST_STR = """
 保尔·柯察金：钢铁意志的写照。保尔·柯察金是苏联作家尼古拉·奥斯特洛夫斯基半自传体小说《钢铁是怎样炼成的》中的主人公，他的一生成为跨越时代的精神偶像，其坚韧不拔的意志和为理想献身的精神激励了无数人。他的故事，是一部关于个人在时代洪流中，历经磨难、百炼成钢的英雄史诗。
@@ -17,7 +17,7 @@ TEST_STR = """
 
 
 def test_langchuner():
-    chunker = LangChunker()
+    chunker = LengthChunker()
     result: list[str] | list[list[str]] = chunker.chunk(TEST_STR)
 
     pp("-" * 20 + "chuner result:" + "-" * 20)

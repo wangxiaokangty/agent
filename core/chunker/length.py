@@ -3,7 +3,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from core.chunker import Chunker
 
 
-class LangChunker(Chunker):
+class LengthChunker(Chunker):
     def __init__(
         self,
         chunk_size: int = 200,
