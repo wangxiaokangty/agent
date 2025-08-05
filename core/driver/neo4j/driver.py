@@ -15,8 +15,6 @@ class Neo4jClient:
             load_dotenv()
             url = os.getenv("NEO4J_URL")
             if not url:
-                raise ValueError(
-                    "please fill NEO4J_URL in .env file in the project's root"
-                )
+                raise ValueError("please fill NEO4J_URL in .env file in the project's root")
         self.database = database
         self.driver = GraphDatabase.driver(url, auth=auth)

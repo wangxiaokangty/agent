@@ -7,7 +7,7 @@ class RecursiveChunker(Chunker):
     def __init__(
         self,
         chunk_size: int = 200,
-        chunk_overlap: int = 20,
+        chunk_overlap: int = 0,
         separators: list[str] | None = None,
     ) -> None:
         super().__init__()

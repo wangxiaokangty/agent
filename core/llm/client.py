@@ -14,15 +14,11 @@ class LLMClient:
 
             base_url = os.getenv("OPENAI_BASE_URL")
             if not base_url:
-                raise ValueError(
-                    "please fill OPENAI_BASE_URL in .env file in the project's root"
-                )
+                raise ValueError("please fill OPENAI_BASE_URL in .env file in the project's root")
         if model_name is None:
             model_name = os.getenv("MODEL_NAME")
             if not model_name:
-                raise ValueError(
-                    "please fill MODEL_NAME in .env file in the project's root"
-                )
+                raise ValueError("please fill MODEL_NAME in .env file in the project's root")
         openai_client = OpenAI(base_url=base_url)
         self.model: VLLM | AsyncVLLM = outlines.from_vllm(openai_client, model_name)  # type: ignore
 
