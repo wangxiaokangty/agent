@@ -3,7 +3,7 @@ from chonkie import CodeChunker
 
 
 class ChonkCodeChunker(Chunker):
-    def __init__(self, language: str = "python", tokenizer_or_token_counter: str = "character", 
+    def __init__(self, language: str = "auto", tokenizer_or_token_counter: str = "character", 
                  chunk_size: int = 2048, include_nodes: bool = False) -> None:
         super().__init__()
         self.chunker = CodeChunker(
