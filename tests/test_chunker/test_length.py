@@ -18,12 +18,12 @@ TEST_STR = """
 """
 
 
-def test_langchuner():
+def test_langchunker():
     chunker = LengthChunker()
     result: list[str] | list[list[str]] = chunker.chunk(TEST_STR)
 
-    pp("-" * 20 + "chuner result:" + "-" * 20)
+    pp("-" * 20 + "chunker result:" + "-" * 20)
     pp(result)
-    pp("-" * 20 + "chuner  finish" + "-" * 20)
+    pp("-" * 20 + "chunker  finish" + "-" * 20)
 
     assert result is not None
