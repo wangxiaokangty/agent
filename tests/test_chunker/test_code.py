@@ -136,7 +136,7 @@ createTodoApp();
 
 
 def test_python_code_chunker():
-    chunker = ChonkCodeChunker(language="python", chunk_size=512)
+    chunker = ChonkCodeChunker(language="python", chunk_size=1024)
     result = chunker.chunk(TEST_PYTHON_CODE)
 
     pp("-" * 20 + "python code chunker result:" + "-" * 20)
@@ -150,7 +150,7 @@ def test_python_code_chunker():
 
 
 def test_javascript_code_chunker():
-    chunker = ChonkCodeChunker(language="javascript", chunk_size=512)
+    chunker = ChonkCodeChunker(language="javascript", chunk_size=1024)
     result = chunker.chunk(TEST_JAVASCRIPT_CODE)
 
     pp("-" * 20 + "javascript code chunker result:" + "-" * 20)
