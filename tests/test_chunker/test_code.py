@@ -1,6 +1,10 @@
 from pprint import pp
 
+from chonkie import Visualizer
+
 from core.chunker.chonk.code import ChonkCodeChunker
+
+vis = Visualizer()
 
 TEST_PYTHON_CODE = '''
 def fibonacci(n):
@@ -136,8 +140,7 @@ def test_python_code_chunker():
     result = chunker.chunk(TEST_PYTHON_CODE)
 
     pp("-" * 20 + "python code chunker result:" + "-" * 20)
-    for i in range(len(result)):
-        print(result[i], end="*" * 50 + "\n\n")
+    vis.print(chunker.chunker.chunk(TEST_PYTHON_CODE))  # type: ignore
     pp("-" * 20 + "python code chunker finish" + "-" * 20)
 
     assert result is not None
@@ -151,8 +154,7 @@ def test_javascript_code_chunker():
     result = chunker.chunk(TEST_JAVASCRIPT_CODE)
 
     pp("-" * 20 + "javascript code chunker result:" + "-" * 20)
-    for i in range(len(result)):
-        print(result[i], end="*" * 50 + "\n\n")
+    vis.print(chunker.chunker.chunk(TEST_JAVASCRIPT_CODE))  # type: ignore
     pp("-" * 20 + "javascript code chunker finish" + "-" * 20)
 
     assert result is not None
