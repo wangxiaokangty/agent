@@ -64,7 +64,7 @@ if __name__ == "__main__":
     main()
 '''
 
-TEST_JAVASCRIPT_CODE = '''
+TEST_JAVASCRIPT_CODE = """
 class TodoList {
     constructor() {
         this.todos = [];
@@ -128,7 +128,7 @@ function createTodoApp() {
 }
 
 createTodoApp();
-'''
+"""
 
 
 def test_python_code_chunker():
@@ -137,7 +137,7 @@ def test_python_code_chunker():
 
     pp("-" * 20 + "python code chunker result:" + "-" * 20)
     for i in range(len(result)):
-        print(result[i],end="*"*50+"\n\n")
+        print(result[i], end="*" * 50 + "\n\n")
     pp("-" * 20 + "python code chunker finish" + "-" * 20)
 
     assert result is not None
@@ -152,7 +152,7 @@ def test_javascript_code_chunker():
 
     pp("-" * 20 + "javascript code chunker result:" + "-" * 20)
     for i in range(len(result)):
-        print(result[i],end="*"*50+"\n\n")
+        print(result[i], end="*" * 50 + "\n\n")
     pp("-" * 20 + "javascript code chunker finish" + "-" * 20)
 
     assert result is not None
