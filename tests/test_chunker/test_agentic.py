@@ -26,19 +26,19 @@ RAG的核心优势在于它的动态性和可追溯性。由于知识库可以�
 def simple_rag_query(query: str, vector_db: VectorDB, llm: LLM):
     # 1. Retrieve relevant text chunks
     retrieved_chunks = vector_db.search(query, top_k=3)
-    
+
     # 2. Build the prompt with context
     context = "\n".join([chunk.text for chunk in retrieved_chunks])
     prompt = f"""
     Based on the following context, please answer the question.
     Context:
     {context}
-    
+
     Question: {query}
-    
+
     Answer:
     """
-    
+
     # 3. Generate response using the LLM
     response = llm.generate(prompt)
     return response
