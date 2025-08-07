@@ -21,3 +21,7 @@ data/
 # ide
 .idea
 .vscode
+
+
+# extra
+.DS_Store

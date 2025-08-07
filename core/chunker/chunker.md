@@ -240,5 +240,140 @@ def simple_rag_query(query: str, vector_db: VectorDB, llm: LLM):
  '    return response\n']
 ```
 
-# more chunker
+# code chunker
+
+根据代码的抽象语法树进行解析，可以自己指定要解析的编程语言，如果不指定，会首先使用默认的神经网络识别
+
+```
+TEST_PYTHON_CODE = '''
+def fibonacci(n):
+    """Calculate the fibonacci sequence up to n."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        next_fib = fib_sequence[i-1] + fib_sequence[i-2]
+        fib_sequence.append(next_fib)
+    
+    return fib_sequence
+
+
+class Calculator:
+    """A simple calculator class."""
+    
+    def __init__(self):
+        self.history = []
+    
+    def add(self, a, b):
+        """Add two numbers."""
+        result = a + b
+        self.history.append(f"{a} + {b} = {result}")
+        return result
+    
+    def multiply(self, a, b):
+        """Multiply two numbers."""
+        result = a * b
+        self.history.append(f"{a} * {b} = {result}")
+        return result
+    
+    def get_history(self):
+        """Get calculation history."""
+        return self.history.copy()
+
+
+def main():
+    """Main function to demonstrate the calculator."""
+    calc = Calculator()
+    
+    # Test fibonacci
+    fib_result = fibonacci(10)
+    print(f"Fibonacci(10): {fib_result}")
+    
+    # Test calculator
+    sum_result = calc.add(5, 3)
+    product_result = calc.multiply(4, 6)
+    
+    print(f"5 + 3 = {sum_result}")
+    print(f"4 * 6 = {product_result}")
+    print(f"History: {calc.get_history()}")
+
+
+if __name__ == "__main__":
+    main()
+'''
+```
+
+被解析为
+
+```
+def fibonacci(n):
+    """Calculate the fibonacci sequence up to n."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        next_fib = fib_sequence[i-1] + fib_sequence[i-2]
+        fib_sequence.append(next_fib)
+    
+    return fib_sequence
+
+
+**************************************************
+
+class Calculator:
+    """A simple calculator class."""
+    
+    def __init__(self):
+        self.history = []
+    
+    def add(self, a, b):
+        """Add two numbers."""
+        result = a + b
+        self.history.append(f"{a} + {b} = {result}")
+        return result
+    
+    def multiply(self, a, b):
+        """Multiply two numbers."""
+        result = a * b
+        self.history.append(f"{a} * {b} = {result}")
+        return result
+    
+    def get_history(self):
+        """Get calculation history."""
+        return self.history.copy()
+
+
+**************************************************
+
+def main():
+    """Main function to demonstrate the calculator."""
+    calc = Calculator()
+    
+    # Test fibonacci
+    fib_result = fibonacci(10)
+    print(f"Fibonacci(10): {fib_result}")
+    
+    # Test calculator
+    sum_result = calc.add(5, 3)
+    product_result = calc.multiply(4, 6)
+    
+    print(f"5 + 3 = {sum_result}")
+    print(f"4 * 6 = {product_result}")
+    print(f"History: {calc.get_history()}")
+
+
+if __name__ == "__main__":
+    main()
+**************************************************
+```
 
