@@ -1,13 +1,13 @@
 from pprint import pp
 
+import pytest
 from chonkie import Visualizer
 
 from core.chunker.chonk.late import ChonkLateChunker
-import pytest
 
 vis = Visualizer()
 
-TEST_TEXT = '''
+TEST_TEXT = """
 Artificial Intelligence (AI) represents one of the most transformative technologies of our time. From its theoretical foundations laid by pioneers like Alan Turing and John McCarthy to today's sophisticated machine learning systems, AI has evolved dramatically.
 
 The field encompasses various subdomains including machine learning, natural language processing, computer vision, and robotics. Machine learning, in particular, has gained tremendous traction with the development of neural networks and deep learning architectures.
@@ -23,7 +23,8 @@ However, AI development also raises important ethical considerations. Issues suc
 The future of AI holds immense promise. Emerging trends include federated learning, which enables training models across distributed data sources while preserving privacy. Quantum machine learning explores the intersection of quantum computing and AI algorithms.
 
 As AI continues to advance, it will likely become even more integrated into our daily lives, transforming how we work, communicate, and solve complex problems. The key lies in developing AI systems that are not only powerful but also responsible, ethical, and beneficial to humanity.
-'''
+"""
+
 
 @pytest.mark.filterwarnings("ignore:")
 def test_late_chunker():
