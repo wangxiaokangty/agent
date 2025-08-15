@@ -1,8 +1,8 @@
 import base64
 import re
+from collections.abc import Iterable
 from io import BytesIO
 from pathlib import Path
-from typing import Iterable
 
 from PIL import Image
 from rich.progress import track
@@ -57,7 +57,7 @@ def replace_image_with_descript(path: Path | str, client: MMClient) -> str:
     assert len(texts) == len(images) + 1, "parser result error"
     descriptions = []
     for index in range(len(images)):
-        BACKGROUND_INFO: str = "".join(texts[max(index - 2,0) : index + 2])
+        BACKGROUND_INFO: str = "".join(texts[max(index - 2, 0) : index + 2])
         BACKGROUND_INFO = BACKGROUND_INFO + INSTRUCT
         discription = client.descript_image_with_text(images[index], BACKGROUND_INFO)
         xml_description = convert_basemodel_to_xml_str(discription)
@@ -69,7 +69,7 @@ def replace_image_with_descript(path: Path | str, client: MMClient) -> str:
     return "".join(results)
 
 
-def process_dir(path: Path | str, client: MMClient, target_dir:Path|str|None = None):
+def process_dir(path: Path | str, client: MMClient, target_dir: Path | str | None = None):
     if not isinstance(path, Path):
         path = Path(path)
     source_dir_path: Path = path
@@ -85,6 +85,7 @@ def process_dir(path: Path | str, client: MMClient, target_dir:Path|str|None = N
         content: str = replace_image_with_descript(source_file, client)
         target_file.write_text(content, encoding="utf-8")
 
+
 if __name__ == "__main__":
     client = MMClient()
-    process_dir("data/pdf.demo",client)
+    process_dir("data/pdf.demo", client)
