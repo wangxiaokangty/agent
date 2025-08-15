@@ -22,6 +22,6 @@ class LLMClient:
         openai_client = OpenAI(base_url=base_url)
         self.model: VLLM | AsyncVLLM = outlines.from_vllm(openai_client, model_name)  # type: ignore
 
-    def struct_generate(self, prompt: str, response_model: type[BaseModel]):
+    def struct_generate(self, prompt: str, response_model: type[BaseModel]) -> str:
         result = self.model(prompt, response_model)
         return result
